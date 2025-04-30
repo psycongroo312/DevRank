@@ -28,7 +28,7 @@ export default function Skills() {
             type="text"
           />
           <button
-            onChange={evaluateLevel}
+            onClick={evaluateLevel}
             className="border-1 p-[5px] px-[10px] cursor-pointer hover:bg-gray-400 rounded-md"
           >
             Узнать свой уровень
