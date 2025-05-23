@@ -1,36 +1,34 @@
 import React from "react";
+import { LEVELS } from "./LevelsData";
 
 export default function Skills() {
   const [skill, setSkill] = React.useState<string>("");
-  const [level, setLevel] = React.useState<string>("...");
+  const [level, setLevel] = React.useState<SkillLevel>("...");
+
+  type SkillLevel = keyof typeof LEVELS | "...";
 
   const handleSkills = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSkill(e.target.value);
   };
 
   const evaluateLevel = () => {
-    const skillsList = skill.toLowerCase().split(" ");
-    if (
-      skillsList.includes("html") ||
-      skillsList.includes("css") ||
-      skillsList.includes("javascript") ||
-      skillsList.includes("js")
-    ) {
-      setLevel("Junior");
-    } else {
-      setLevel("...");
-    }
-    if (
-      skillsList.includes("react") ||
-      skillsList.includes("typescript") ||
-      skillsList.includes("ts") ||
-      skillsList.includes("redux")
-    ) {
-      setLevel("Middle");
-    }
     if (!skill.trim()) {
       setLevel("...");
+      return;
     }
+    const skillsList = skill
+      .toLowerCase()
+      .split(" ")
+      .map((s) => s.trim());
+    let detectedLevel: SkillLevel = "...";
+
+    (Object.keys(LEVELS) as Array<keyof typeof LEVELS>).forEach((lvl) => {
+      if (LEVELS[lvl].some((skill) => skillsList.includes(skill))) {
+        detectedLevel = lvl;
+      }
+    });
+
+    setLevel(detectedLevel);
   };
 
   return (
