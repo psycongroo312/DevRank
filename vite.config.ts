@@ -4,6 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
- base: '/https://github.com/psycongroo312/DevRank/',
+ base: 'https://github.com/psycongroo312/DevRank/',
   plugins: [react(), tailwindcss()],
 });
