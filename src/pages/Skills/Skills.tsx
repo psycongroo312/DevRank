@@ -18,8 +18,9 @@ export default function Skills() {
     }
     const skillsList = skill
       .toLowerCase()
-      .split(" ")
-      .map((s) => s.trim());
+      .split(/[, ]+/)
+      .map((s) => s.trim())
+      .filter((s) => s !== "");
     let detectedLevel: SkillLevel = "...";
 
     (Object.keys(LEVELS) as Array<keyof typeof LEVELS>).forEach((lvl) => {
