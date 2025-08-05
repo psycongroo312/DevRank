@@ -14,6 +14,7 @@ DevRank – это тестовый проект, который помогае�
 
 git clone https://github.com/psycongroo312/DevRank.git
 
+cd DevRank
 
 Установите зависимости
 
